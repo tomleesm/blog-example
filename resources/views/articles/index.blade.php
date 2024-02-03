@@ -12,4 +12,6 @@
     </li>
   @endforeach
 </ul>
+
+<a href="{{ route('articles.create') }}">New Article</a>
 @endsection
