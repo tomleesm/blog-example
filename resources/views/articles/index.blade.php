@@ -6,7 +6,9 @@
 <ul>
   @foreach($articles as $article)
     <li>
-      {{ $article->title }}
+      <a href="{{ route('articles.show', ['article' => $article->id]) }}">
+        {{ $article->title }}
+      </a>
     </li>
   @endforeach
 </ul>
