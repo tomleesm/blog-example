@@ -41,4 +41,28 @@ class ArticleController extends Controller
             throw new \Exception('it can not store a new article');
         }
     }
+
+    public function edit($id)
+    {
+        $article = Article::find($id);
+        return view('articles.edit', ['article' => $article]);
+    }
+
+    public function update($id, Request $request)
+    {
+        $validated = $request->validate([
+            'article.title' => 'required',
+            'article.body'  => 'required|min:10'
+        ]);
+
+        $article = Article::find($id);
+        $article->title = $request->input('article.title');
+        $article->body = $request->input('article.body');
+
+        if ($article->save()) {
+            return redirect()->route('articles.show', ['article' => $article->id]);
+        } else {
+            throw new \Exception('it can not store a new article');
+        }
+    }
 }
