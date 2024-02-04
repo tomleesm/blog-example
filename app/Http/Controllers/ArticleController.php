@@ -65,4 +65,12 @@ class ArticleController extends Controller
             throw new \Exception('it can not store a new article');
         }
     }
+
+    public function destroy($id)
+    {
+        $article = Article::find($id);
+        $article->delete();
+
+        return redirect()->route('home');
+    }
 }
