@@ -117,6 +117,11 @@
   resolved "https://registry.yarnpkg.com/@esbuild/win32-x64/-/win32-x64-0.19.11.tgz#a5d300008960bb39677c46bf16f53ec70d8dee04"
   integrity sha512-vfkhltrjCAb603XaFhqhAF4LGDi2M4OrCRrFusyQ+iTLQ/o60QQXxc9cZC/FFpihBI9N1Grn6SMKVJ4KP7Fuiw==
 
+"@hotwired/turbo@^8.0.0-beta.1":
+  version "8.0.0-rc.2"
+  resolved "https://registry.yarnpkg.com/@hotwired/turbo/-/turbo-8.0.0-rc.2.tgz#8877c10fd84b84d45fc3dae19c7857e799f0d2ca"
+  integrity sha512-mDmBt7Ay9xBg9bAPjatF4I51/oLhhkLKalJkYvjstZ4acrpbFXl5ZNFtZ5LrUhwqxI4bFpbKv7aVE2+SQpwl/w==
+
 "@rollup/rollup-android-arm-eabi@4.9.5":
   version "4.9.5"
   resolved "https://registry.yarnpkg.com/@rollup/rollup-android-arm-eabi/-/rollup-android-arm-eabi-4.9.5.tgz#b752b6c88a14ccfcbdf3f48c577ccc3a7f0e66b9"
@@ -266,6 +271,11 @@ jquery@^3.7.1:
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.7.1.tgz#083ef98927c9a6a74d05a6af02806566d16274de"
   integrity sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==
 
+laravel-echo@^1.15.0:
+  version "1.15.3"
+  resolved "https://registry.yarnpkg.com/laravel-echo/-/laravel-echo-1.15.3.tgz#462aea1e6930731c95af2eaac136a3c01aa984fe"
+  integrity sha512-SRXzccaat6w4qKgZ4/rjFKr3nJfVxB+ly4V0MEJNIF1/TpERNXepo3uk7NnOjBGsiV/np1fl2XitAzW4Sa1s/w==
+
 laravel-vite-plugin@^1.0.0:
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/laravel-vite-plugin/-/laravel-vite-plugin-1.0.1.tgz#b92d0c939ccd60879746b23282100131f753cec7"
@@ -315,6 +325,13 @@ proxy-from-env@^1.1.0:
   resolved "https://registry.yarnpkg.com/proxy-from-env/-/proxy-from-env-1.1.0.tgz#e102f16ca355424865755d2c9e8ea4f24d58c3e2"
   integrity sha512-D+zkORCbA9f1tdWRK0RaCR3GPv50cMxcrz4X8k5LTSUD1Dkw47mKJEZQNunItRTkWwgtaUSo1RVFRIG9ZXiFYg==
 
+pusher-js@^8.0.1:
+  version "8.3.0"
+  resolved "https://registry.yarnpkg.com/pusher-js/-/pusher-js-8.3.0.tgz#a40d76c373a56ba8b3de2c55414380cb49975207"
+  integrity sha512-6GohP06WlVeomAQQe9qWh1IDzd3+InluWt+ZUOcecVK1SEQkg6a8uYVsvxSJm7cbccfmHhE0jDkmhKIhue8vmA==
+  dependencies:
+    tweetnacl "^1.0.3"
+
 rollup@^4.2.0:
   version "4.9.5"
   resolved "https://registry.yarnpkg.com/rollup/-/rollup-4.9.5.tgz#62999462c90f4c8b5d7c38fc7161e63b29101b05"
@@ -341,6 +358,11 @@ source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
+
+tweetnacl@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/tweetnacl/-/tweetnacl-1.0.3.tgz#ac0af71680458d8a6378d0d0d050ab1407d35596"
+  integrity sha512-6rt+RN7aOi1nGMyC4Xa5DdYiukl2UWCbcJft7YhxReBGQD7OAM8Pbxw6YMo4r2diNEA8FEmu32YOn9rhaiE5yw==
 
 vite-plugin-full-reload@^1.1.0:
   version "1.1.0"
