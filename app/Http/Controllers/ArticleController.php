@@ -73,6 +73,7 @@ class ArticleController extends Controller
     public function destroy($id)
     {
         $article = Article::find($id);
+        $article->comments()->delete();
         $article->delete();
 
         return redirect()->route('home');
