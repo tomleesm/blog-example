@@ -14,6 +14,7 @@ class CommentController extends Controller
         $comment = new Comment();
         $comment->commenter = $request->input('comment.commenter');
         $comment->body = $request->input('comment.body');
+        $comment->status = $request->input('comment.status');
 
         if ($article->comments()->save($comment)) {
             return redirect()->route('articles.show', ['article' => $article->id]);
