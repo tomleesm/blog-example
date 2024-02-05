@@ -7,4 +7,9 @@ trait Visible
     {
         return $this->status == 'archived';
     }
+
+    public static function publicCount()
+    {
+        return self::where('status', 'public')->count();
+    }
 }
