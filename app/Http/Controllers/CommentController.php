@@ -8,6 +8,11 @@ use App\Models\Comment;
 
 class CommentController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth.basic:,name')->only('destroy');
+    }
+
     public function store($articleId, Request $request)
     {
         $article = Article::find($articleId);
