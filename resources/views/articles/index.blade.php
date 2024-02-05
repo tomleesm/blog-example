@@ -3,6 +3,12 @@
 @section('content')
 <h1>Articles</h1>
 
+@php
+use App\Models\Article;
+@endphp
+
+Our blog has {{ Article::publicCount() }} articles and counting!
+
 <ul>
   @foreach($articles as $article)
     @unless($article->isArchived())
