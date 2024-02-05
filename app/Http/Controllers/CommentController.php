@@ -22,4 +22,12 @@ class CommentController extends Controller
             throw new \Exception('it can not store a new article');
         }
     }
+
+    public function destroy($articleId, $commentId)
+    {
+        $comment = Comment::find($commentId);
+        $comment->delete();
+
+        return redirect()->route('articles.show', ['article' => $articleId]);
+    }
 }
