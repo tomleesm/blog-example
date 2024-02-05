@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,3 +17,4 @@ use App\Http\Controllers\ArticleController;
 
 Route::get('/', [ArticleController::class, 'index'])->name('home');
 Route::resource('articles', ArticleController::class);
+Route::resource('articles.comments', CommentController::class);
