@@ -8,6 +8,14 @@
       <textarea name="comment[body]" id="comment_body"></textarea>
     </p>
     <p>
+      <label for="comment_status">Status</label><br>
+      <select name="comment[status]" id="comment_status">
+        <option selected="selected" value="public">public</option>
+        <option value="private">private</option>
+        <option value="archived">archived</option>
+      </select>
+    </p>
+    <p>
       <input type="submit" name="commit" value="Create Comment" data-disable-with="Create Comment">
     </p>
   </form>
