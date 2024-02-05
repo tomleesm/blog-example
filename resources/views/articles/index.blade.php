@@ -5,11 +5,13 @@
 
 <ul>
   @foreach($articles as $article)
-    <li>
-      <a href="{{ route('articles.show', ['article' => $article->id]) }}">
-        {{ $article->title }}
-      </a>
-    </li>
+    @unless($article->isArchived())
+      <li>
+        <a href="{{ route('articles.show', ['article' => $article->id]) }}">
+          {{ $article->title }}
+        </a>
+      </li>
+    @endunless
   @endforeach
 </ul>
 
