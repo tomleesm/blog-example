@@ -19,7 +19,7 @@ if(isset($article)) {
 <form action="{{ route($route_name, $route_parameter) }}" accept-charset="UTF-8" method="post">
     @csrf
     @method($method)
-    
+
     <div>
       <label for="article_title">Title</label><br>
       <input type="text" name="article[title]" id="article_title" value="{{ old('article.title', $article_title) }}">
@@ -27,13 +27,22 @@ if(isset($article)) {
         <div>{{ $message }}</div>
       @endforeach
     </div>
-  
+
     <div>
       <label for="article_body">Body</label><br>
       <textarea name="article[body]" id="article_body">{{ old('article.body', $article_body) }}</textarea><br>
       @foreach($errors->get('article.body') as $message)
         <div>{{ $message }}</div>
       @endforeach
+    </div>
+
+    <div>
+      <label for="article_status">Status</label><br>
+      <select name="article[status]" id="article_status">
+        <option selected="selected" value="public">public</option>
+        <option value="private">private</option>
+        <option value="archived">archived</option>
+      </select>
     </div>
 
     <div>
