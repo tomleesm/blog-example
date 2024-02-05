@@ -28,12 +28,14 @@ class ArticleController extends Controller
     {
         $validated = $request->validate([
             'article.title' => 'required',
-            'article.body'  => 'required|min:10'
+            'article.body'  => 'required|min:10',
+            'article.status' => 'in:public,private,archived'
         ]);
 
         $article = new Article();
         $article->title = $request->input('article.title');
         $article->body = $request->input('article.body');
+        $article->status = $request->input('article.status');
 
         if ($article->save()) {
             return redirect()->route('articles.show', ['article' => $article->id]);
@@ -52,12 +54,14 @@ class ArticleController extends Controller
     {
         $validated = $request->validate([
             'article.title' => 'required',
-            'article.body'  => 'required|min:10'
+            'article.body'  => 'required|min:10',
+            'article.status' => 'in:public,private,archived'
         ]);
 
         $article = Article::find($id);
         $article->title = $request->input('article.title');
         $article->body = $request->input('article.body');
+        $article->status = $request->input('article.status');
 
         if ($article->save()) {
             return redirect()->route('articles.show', ['article' => $article->id]);
