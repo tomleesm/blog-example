@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,4 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'index')->name('home');
+Route::get('/', [ArticleController::class, 'index'])->name('home');
+Route::apiResource('articles', ArticleController::class);
