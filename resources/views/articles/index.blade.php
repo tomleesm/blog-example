@@ -59,9 +59,45 @@ Our blog has 0 articles and counting!
     // 按下 New Article 時
     $('.new-article-link').on('click', function() {
       // 把表單複製後，刪除 class template，因為它不再位於 .templates 內
-      const newArticleForm = $('.template.new-article').clone().removeClass('template');
+      const newArticleForm = $('.template.new-article').clone().removeClass('template').addClass('show');
       // 選取 div 容器，清空容器，再把表單加到容器內
       $('.container').empty().append(newArticleForm);
+    });
+    $('.container').on('submit', '.new-article.show > form', function ( event ) {
+        event.preventDefault();
+        const formValue = $(this).serializeArray();
+        const requestBody = {
+            "data":
+            {
+              "article":
+              {
+                "title": formValue[1].value,
+                "body": formValue[2].value
+              }
+            }
+        };
+        $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        const ajaxOption = {
+            method: 'POST',
+            url: 'http://127.0.0.1:8000/articles',
+            contentType: 'application/json; charset=UTF-8',
+            dataType: 'json',
+            // JSON.stringify(): JSON 物件要轉成字串才能傳送
+            data: JSON.stringify(requestBody),
+            success: function ( data ) {
+                console.log( 'success' )
+                console.log( data )
+            },
+            error: function ( data ) {
+                console.log( 'error' )
+                console.log( data )
+            }
+        };
+        $.ajax(ajaxOption);
     });
   </script>
 </html>
