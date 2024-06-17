@@ -22,6 +22,14 @@ class ArticleController extends Controller
             'body' => $validated['data']['article']['body']
         ]);
 
-        return [ 'id' => $article->id ];
+        return [
+            'data' => [
+                'article' => [
+                    'id' => $article->id,
+                    'title' => $validated['data']['article']['title'],
+                    'body' => $validated['data']['article']['body']
+                ]
+            ]
+        ];
     }
 }
