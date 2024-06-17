@@ -31,11 +31,15 @@ Our blog has 0 articles and counting!
         <div>
           <label for="article_title">Title</label><br>
           <input type="text" name="article[title]" id="article_title" value="">
+          <ul>
+          </ul>
         </div>
 
         <div>
           <label for="article_body">Body</label><br>
-          <textarea name="article[body]" id="article_body"></textarea><br>
+          <textarea name="article[body]" id="article_body"></textarea>
+          <ul>
+          </ul>
         </div>
 
         <div>
@@ -94,7 +98,26 @@ Our blog has 0 articles and counting!
             },
             error: function ( data ) {
                 console.log( 'error' )
-                console.log( data )
+                // 前端抓取驗證失敗的 json
+                const errors = data.responseJSON.errors
+
+                let errorMessageList = '';
+                $.each(errors['data.article.title'], function ( index, errorMessage ) {
+                    // 把錯誤訊息填到 <li>
+                    errorMessageList += ( '<li>' + errorMessage + '</li>' );
+                })
+                $('.new-article.show > form input[name="article[title]"]+ul')
+                .empty() // 刪除之前的錯誤訊息
+                .append($(errorMessageList)) //附加到錯誤訊息的 <ul>
+
+                errorMessageList = '';
+                $.each(errors['data.article.body'], function ( index, errorMessage ) {
+                    // 把錯誤訊息填到 <li>
+                    errorMessageList += ( '<li>' + errorMessage + '</li>' );
+                })
+                $('.new-article.show > form textarea[name="article[body]"]+ul')
+                .empty() // 刪除之前的錯誤訊息
+                .append($(errorMessageList)) //附加到錯誤訊息的 <ul>
             }
         };
         $.ajax(ajaxOption);
