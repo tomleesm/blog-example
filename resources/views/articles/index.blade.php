@@ -19,7 +19,7 @@
 
 Our blog has 0 articles and counting!
 <ul> </ul>
-<a href="#new-article" class="new-article-link">New Article</a>
+<a href="" class="new-article-link">New Article</a>
     </div>
 
   <div class="templates">
@@ -66,10 +66,13 @@ Our blog has 0 articles and counting!
   <script type="module">
     // 按下 New Article 時
     $('.new-article-link').on('click', function() {
+      event.preventDefault();
       // 把表單複製後，刪除 class template，因為它不再位於 .templates 內
       const newArticleForm = $('.template.new-article').clone().removeClass('template').addClass('show');
       // 選取 div 容器，清空容器，再把表單加到容器內
       $('.container').empty().append(newArticleForm);
+      // 網址改成 /articles/create
+      history.pushState({}, "", '/articles/create');
     });
     $('.container').on('submit', '.new-article.show > form', function ( event ) {
         event.preventDefault();
