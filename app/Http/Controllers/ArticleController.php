@@ -10,7 +10,21 @@ class ArticleController extends Controller
 {
     public function index()
     {
-        return view('articles.index');
+        $articles = Article::get();
+
+        $articleObjectList = [];
+        foreach($articles as $article)
+        {
+            $articleObjectList[] = [
+                'article' =>
+                    [
+                        'id' => $article->id,
+                        'title' => $article->title,
+                    ]
+            ];
+        }
+
+        return ['data' => $articleObjectList ];
     }
 
     public function store(StoreArticleRequest $request)
