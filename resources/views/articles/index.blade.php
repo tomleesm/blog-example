@@ -56,6 +56,10 @@ Our blog has 0 articles and counting!
         </div>
       </form>
     </div>
+    <div class="template article">
+        <h1></h1>
+        <p></p>
+    </div>
   </div>
   </body>
   @vite(['resources/js/app.js'])
@@ -92,9 +96,15 @@ Our blog has 0 articles and counting!
             dataType: 'json',
             // JSON.stringify(): JSON 物件要轉成字串才能傳送
             data: JSON.stringify(requestBody),
-            success: function ( data ) {
+            success: function ( response ) {
                 console.log( 'success' )
-                console.log( data )
+                const article = $('.template.article').clone().removeClass('template').addClass('show');
+                article.children('h1').text(response.data.article.title);
+                article.children('p').text(response.data.article.body)
+                $('.container').empty().append(article);
+
+                // 網址改成 /articles/123
+                history.pushState(response, "", '/articles/' + response.data.article.id);
             },
             error: function ( data ) {
                 console.log( 'error' )
