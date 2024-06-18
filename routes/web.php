@@ -14,5 +14,5 @@ use App\Http\Controllers\ArticleController;
 |
 */
 
-Route::get('/', [ArticleController::class, 'index'])->name('home');
+Route::view('/', 'home')->name('home');
 Route::apiResource('articles', ArticleController::class);
