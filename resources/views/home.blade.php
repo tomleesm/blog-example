@@ -18,7 +18,7 @@
 
 
 Our blog has 0 articles and counting!
-<ul> </ul>
+<ul class="article links"> </ul>
 <a href="" class="new-article-link">New Article</a>
     </div>
 
@@ -64,6 +64,25 @@ Our blog has 0 articles and counting!
   </body>
   @vite(['resources/js/app.js'])
   <script type="module">
+    $(document).ready(function () {
+        const ajaxOption = {
+            method: 'GET',
+            url: 'http://127.0.0.1:8000/articles',
+            contentType: 'application/json; charset=UTF-8',
+            dataType: 'json',
+            success: function ( response ) {
+                console.log( 'success' )
+                const articleLinks = $('.container > ul.article.links').empty();
+                $.each(response.data, function (index, json) {
+                   $('<li><a href="/articles/' + json.article.id + '">' + json.article.title + '</a></li>').appendTo(articleLinks);
+                });
+            },
+            error: function ( data ) {
+                console.log( 'error' )
+            }
+        };
+        $.ajax(ajaxOption);
+    });
     // 按下 New Article 時
     $('.new-article-link').on('click', function() {
       event.preventDefault();
