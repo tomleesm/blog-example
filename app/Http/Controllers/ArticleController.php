@@ -36,12 +36,22 @@ class ArticleController extends Controller
             'body' => $validated['data']['article']['body']
         ]);
 
+        return $this->articleToJSON($article);
+    }
+
+    public function show(Article $article)
+    {
+        return $this->articleToJSON($article);
+    }
+
+    private function articleToJSON(Article $article)
+    {
         return [
             'data' => [
                 'article' => [
                     'id' => $article->id,
-                    'title' => $validated['data']['article']['title'],
-                    'body' => $validated['data']['article']['body']
+                    'title' => $article->title,
+                    'body' => $article->body
                 ]
             ]
         ];
