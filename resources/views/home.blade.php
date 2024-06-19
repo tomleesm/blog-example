@@ -59,6 +59,10 @@ Our blog has 0 articles and counting!
     <div class="template article">
         <h1></h1>
         <p></p>
+
+        <ul>
+          <li><a href="">Edit</a></li>
+        </ul>
     </div>
   </div>
   </body>
@@ -69,6 +73,7 @@ Our blog has 0 articles and counting!
         const article = $('.template.article').clone().removeClass('template').addClass('show');
         article.children('h1').text(response.data.article.title);
         article.children('p').text(response.data.article.body)
+        article.find('a:contains("Edit")').attr('href', '/articles/' + response.data.article.id + '/edit')
         $('.container').empty().append(article);
 
         // 網址改成 /articles/123
