@@ -64,6 +64,17 @@ Our blog has 0 articles and counting!
   </body>
   @vite(['resources/js/app.js'])
   <script type="module">
+    const getArticle = function ( response ) {
+        console.log( 'get an article' )
+        const article = $('.template.article').clone().removeClass('template').addClass('show');
+        article.children('h1').text(response.data.article.title);
+        article.children('p').text(response.data.article.body)
+        $('.container').empty().append(article);
+
+        // 網址改成 /articles/123
+        history.pushState(response, "", '/articles/' + response.data.article.id);
+    }
+    // 所有文章的連結
     $(document).ready(function () {
         const ajaxOption = {
             method: 'GET',
@@ -76,6 +87,22 @@ Our blog has 0 articles and counting!
                 $.each(response.data, function (index, json) {
                    $('<li><a href="/articles/' + json.article.id + '">' + json.article.title + '</a></li>').appendTo(articleLinks);
                 });
+            },
+            error: function ( data ) {
+                console.log( 'error' )
+            }
+        };
+        $.ajax(ajaxOption);
+    });
+    $('ul.article.links').on('click', 'a', function( event ) {
+        event.preventDefault();
+        const ajaxOption = {
+            method: 'GET',
+            url: $(this).attr('href'),
+            contentType: 'application/json; charset=UTF-8',
+            dataType: 'json',
+            success: function (response) {
+                getArticle(response)
             },
             error: function ( data ) {
                 console.log( 'error' )
@@ -119,14 +146,7 @@ Our blog has 0 articles and counting!
             // JSON.stringify(): JSON 物件要轉成字串才能傳送
             data: JSON.stringify(requestBody),
             success: function ( response ) {
-                console.log( 'success' )
-                const article = $('.template.article').clone().removeClass('template').addClass('show');
-                article.children('h1').text(response.data.article.title);
-                article.children('p').text(response.data.article.body)
-                $('.container').empty().append(article);
-
-                // 網址改成 /articles/123
-                history.pushState(response, "", '/articles/' + response.data.article.id);
+                getArticle(response)
             },
             error: function ( data ) {
                 console.log( 'error' )
