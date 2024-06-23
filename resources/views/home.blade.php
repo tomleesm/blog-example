@@ -75,9 +75,6 @@ Our blog has 0 articles and counting!
         article.children('p').text(response.data.article.body)
         article.find('a:contains("Edit")').attr('href', '/articles/' + response.data.article.id + '/edit')
         $('.container').empty().append(article);
-
-        // 網址改成 /articles/123
-        history.pushState(response, "", '/articles/' + response.data.article.id);
     }
     // 所有文章的連結
     $(document).ready(function () {
@@ -122,8 +119,6 @@ Our blog has 0 articles and counting!
       const newArticleForm = $('.template.new-article').clone().removeClass('template').addClass('show');
       // 選取 div 容器，清空容器，再把表單加到容器內
       $('.container').empty().append(newArticleForm);
-      // 網址改成 /articles/create
-      history.pushState({}, "", '/articles/create');
     });
     $('.container').on('submit', '.new-article.show > form', function ( event ) {
         event.preventDefault();
